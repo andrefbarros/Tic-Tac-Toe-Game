@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import BoardPosition from "./components/BoardPosition";
+import { MouseEvent } from "react";
 
 function App() {
   // -1 -> "X"
@@ -112,7 +113,7 @@ function App() {
 
   // function to handle click in board position
   function handleClick(e: MouseEvent<HTMLDivElement>) {
-    const [x, y] = e.target.id.split("");
+    const [x, y] = e.currentTarget.id.split("");
     if (board[x][y] !== 0) return;
 
     setBoard((currentBoard) => {
