@@ -130,7 +130,7 @@ function App() {
   // function to check if there is a winner in real time
   useEffect(() => {
     if (checkWin()) {
-      alert(`O jogador: ${currentPlayer === 1 ? "X" : "O"} ganhou`);
+      alert(`The player: ${currentPlayer === 1 ? "X" : "O"} won!`);
       if (currentPlayer === 1) updateXWins();
       else updatedOWins();
       setBoard(defaultBoard);
