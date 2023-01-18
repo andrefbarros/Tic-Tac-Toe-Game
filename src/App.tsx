@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import BoardPosition from "./components/BoardPosition";
-import { MouseEvent } from "react";
 
 function App() {
   // -1 -> "X"
@@ -127,19 +126,23 @@ function App() {
     changePlayer();
   }
 
+  function resetRound() {
+    setBoard(defaultBoard);
+    setCurrentPlayer(-1);
+    setCurrentPlayNumber(0);
+  }
+
   // function to check if there is a winner in real time
   useEffect(() => {
     if (checkWin()) {
       alert(`The player: ${currentPlayer === 1 ? "X" : "O"} won!`);
       if (currentPlayer === 1) updateXWins();
       else updatedOWins();
-      setBoard(defaultBoard);
-      setCurrentPlayer(-1);
-      setCurrentPlayNumber(0);
+      resetRound();
     }
     if (currentPlayNumber === 9) {
-      setCurrentPlayNumber(0);
-      setCurrentPlayer(-1);
+      alert("No one won! Resetting round...");
+      resetRound();
     }
   }, [currentPlayer, board]);
 
